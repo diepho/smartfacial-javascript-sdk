@@ -1,6 +1,6 @@
-# CompreFace JavaScript SDK
+# SmartFacial JavaScript SDK
 
-CompreFace JavaScript SDK makes face recognition into your application even easier.
+SmartFacial JavaScript SDK makes face recognition into your application even easier.
 
 # Table of content
 - [Requirements](#requirements)
@@ -12,7 +12,7 @@ CompreFace JavaScript SDK makes face recognition into your application even easi
   - [Environments](#environments)
   - [Webcam demo](#webcam-demo)
 - [Reference](#reference)
-  - [CompreFace Global Object](#compreface-global-object)
+  - [SmartFacial Global Object](#SmartFacial-global-object)
     - [Methods](#methods)
   - [Recognition Service](#recognition-service)
     - [Recognize Faces from a Given Image](#recognize-faces-from-a-given-image)
@@ -39,13 +39,13 @@ CompreFace JavaScript SDK makes face recognition into your application even easi
 
 # Requirements
 
-Before using our SDK make sure you have installed CompreFace and Nodejs on your machine.
-1. [CompreFace](https://github.com/exadel-inc/CompreFace#getting-started-with-compreface) (See below compatibility matrix)
+Before using our SDK make sure you have installed SmartFacial and Nodejs on your machine.
+1. [SmartFacial](https://github.com/diepho/SmartFacial#getting-started-with-SmartFacial) (See below compatibility matrix)
 2. [Nodejs](https://nodejs.org/en/) (Version 10+)
 
-## CompreFace compatibility matrix
+## SmartFacial compatibility matrix
 
-| CompreFace JS SDK version | CompreFace 0.4.x | CompreFace 0.5.x | CompreFace 0.6.x | CompreFace 1.0.x |
+| SmartFacial JS SDK version | SmartFacial 0.4.x | SmartFacial 0.5.x | SmartFacial 0.6.x | SmartFacial 1.0.x |
 |---------------------------|------------------|------------------|------------------|------------------|
 | 0.4.1                     | ✔                | ✘                | ✘                | ✘                |
 | 0.5.x                     | ✘                | ✔                | :yellow_circle:  | :yellow_circle:  |
@@ -54,39 +54,39 @@ Before using our SDK make sure you have installed CompreFace and Nodejs on your 
 
 Explanation:
 
-* ✔  SDK supports all functionality from CompreFace.
-* :yellow_circle:  SDK works with this CompreFace version.
-  In case if CompreFace version is newer - SDK won't support new features of CompreFace. In case if CompreFace version is older - new SDK features will fail.
+* ✔  SDK supports all functionality from SmartFacial.
+* :yellow_circle:  SDK works with this SmartFacial version.
+  In case if SmartFacial version is newer - SDK won't support new features of SmartFacial. In case if SmartFacial version is older - new SDK features will fail.
 * ✘ There are major backward compatibility issues. It is not recommended to use these versions together
 
 # Installation
-To add CompreFace JS SDK to your project, run the following command in the project folder:
+To add SmartFacial JS SDK to your project, run the following command in the project folder:
 
-```npm i @exadel/compreface-js-sdk```
+```npm i @edunet/smartfacial-js-sdk```
 
 
 # Usage
 
 ## Initialization
 
-To start using JavaScript SDK you need to import `CompreFace` object from 'compreface-js-sdk' dependency.  
+To start using JavaScript SDK you need to import `SmartFacial` object from 'smartfacial-js-sdk' dependency.  
 
-Then you need to init it with `url` and `port`. By default, if you run CompreFace on your local machine, it's `http://localhost` and `8000` respectively.
-You can pass optional `options` object when creating CompreFace to set default parameters, see reference for [more information](#compreface-global-object).
+Then you need to init it with `url` and `port`. By default, if you run SmartFacial on your local machine, it's `http://localhost` and `8000` respectively.
+You can pass optional `options` object when creating SmartFacial to set default parameters, see reference for [more information](#SmartFacial-global-object).
 
-After you initialized `CompreFace` object you need to init the service object with the `api key` of your face service. You can use this service object to recognize faces.
+After you initialized `SmartFacial` object you need to init the service object with the `api key` of your face service. You can use this service object to recognize faces.
 
 However, before recognizing you need first to add faces into the face collection. To do this, get the face collection object from the service object.
 
 ```javascript
-import { CompreFace } from 'compreface-js-sdk';
+import { SmartFacial } from 'smartfacial-js-sdk';
 
 let api_key = "your_key";
 let url = "http://localhost";
 let port = 8000;
 
-let compreFace = new CompreFace(url, port); // set CompreFace url and port 
-let recognitionService = compreFace.initFaceRecognitionService(api_key); // initialize service
+let SmartFacial = new SmartFacial(url, port); // set SmartFacial url and port 
+let recognitionService = SmartFacial.initFaceRecognitionService(api_key); // initialize service
 let faceCollection = recognitionService.getFaceCollection(); // use face collection to fill it with known faces
 let subjects = recognitionService.getSubjects(); // use subjects object to work with subjects directely
 ```
@@ -137,20 +137,20 @@ NOTE: We provide 3 ways of uploading image to our SDK. They are url, blob and re
 
 # Reference
 
-## CompreFace Global Object
+## SmartFacial Global Object
 
-Global CompreFace Object is used for initializing connection to CompreFace and setting default values for options.
+Global SmartFacial Object is used for initializing connection to SmartFacial and setting default values for options.
 Default values will be used in every service method if applicable. 
 If the option’s value is set in the global object and passed as a function argument then the function argument value will be used.
 
 **Constructor:**
 
-```new CompreFace(server, port, options)```
+```new SmartFacial(server, port, options)```
 
 | Argument | Type   | Required | Notes                                                                  |
 |----------|--------|----------|------------------------------------------------------------------------|
-| url      | string | required | URL with protocol where CompreFace is located. E.g. `http://localhost` |
-| port     | string | required | CompreFace port. E.g. `8000`                                           |
+| url      | string | required | URL with protocol where SmartFacial is located. E.g. `http://localhost` |
+| port     | string | required | SmartFacial port. E.g. `8000`                                           |
 | options  | object | optional | Default values for face recognition services                           |
 
 Possible options:
@@ -160,7 +160,7 @@ Possible options:
 | det_prob_threshold | string  | minimum required confidence that a recognized face is actually a face. Value is between 0.0 and 1.0                                                                                          |
 | limit              | integer | maximum number of faces on the image to be recognized. It recognizes the biggest faces first. Value of 0 represents no limit. Default value: 0                                               |
 | prediction_count   | integer | maximum number of subject predictions per face. It returns the most similar subjects. Default value: 1                                                                                       |
-| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md) |
+| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md) |
 | status             | boolean | if true includes system information like execution_time and plugin_version fields. Default value is false                                                                                    |
 
 Example:
@@ -176,12 +176,12 @@ let options = {
   status: "true"
 }
 
-let compreFace = new CompreFace(server, port, options);
+let SmartFacial = new SmartFacial(server, port, options);
 ```
 
 ### Methods
 
-1. ```compreFace.initFaceRecognitionService(api_key)```
+1. ```SmartFacial.initFaceRecognitionService(api_key)```
 
 Inits face recognition service object.
 
@@ -192,10 +192,10 @@ Inits face recognition service object.
 Example:
 
 ```js
-let recognitionService = compreFace.initFaceRecognitionService(api_key);
+let recognitionService = SmartFacial.initFaceRecognitionService(api_key);
 ```
 
-2. ```compreFace.initFaceDetectionService(api_key)```
+2. ```SmartFacial.initFaceDetectionService(api_key)```
 
 Inits face detection service object.
 
@@ -206,10 +206,10 @@ Inits face detection service object.
 Example:
 
 ```js
-let detectionService = compreFace.initFaceDetectionService(api_key);
+let detectionService = SmartFacial.initFaceDetectionService(api_key);
 ```
 
-3. ```compreFace.initFaceVerificationService(api_key)```
+3. ```SmartFacial.initFaceVerificationService(api_key)```
 
 Inits face verification service object.
 
@@ -220,7 +220,7 @@ Inits face verification service object.
 Example:
 
 ```js
-let verificationService = compreFace.initFaceVerificationService(api_key);
+let verificationService = SmartFacial.initFaceVerificationService(api_key);
 ```
 
 ## Recognition Service
@@ -229,7 +229,7 @@ Face recognition service is used for face identification.
 This means that you first need to upload known faces to face collection and then recognize unknown faces among them. 
 When you upload an unknown face, the service returns the most similar faces to it. 
 Also, face recognition service supports verify endpoint to check if this person from face collection is the correct one.
-For more information, see [CompreFace page](https://github.com/exadel-inc/CompreFace).
+For more information, see [SmartFacial page](https://github.com/exadel-inc/SmartFacial).
 
 ### Recognize Faces from a Given Image
 
@@ -250,7 +250,7 @@ Supported options:
 | det_prob_threshold | string  | minimum required confidence that a recognized face is actually a face. Value is between 0.0 and 1.0                                                                                          |
 | limit              | integer | maximum number of faces on the image to be recognized. It recognizes the biggest faces first. Value of 0 represents no limit. Default value: 0                                               |
 | prediction_count   | object  | maximum number of subject predictions per face. It returns the most similar subjects. Default value: 1                                                                                       |
-| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md) |
+| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md) |
 | status             | boolean | if true includes system information like execution_time and plugin_version fields. Default value is false                                                                                    |
 
 Response:
@@ -304,14 +304,14 @@ Response:
 
 | Element                    | Type    | Description                                                                                                                                                                                                           |
 |----------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/CompreFace/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
-| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
+| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
+| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
 | box                        | object  | list of parameters of the bounding box for this face                                                                                                                                                                  |
 | probability                | float   | probability that a found face is actually a face                                                                                                                                                                      |
 | x_max, y_max, x_min, y_min | integer | coordinates of the frame containing the face                                                                                                                                                                          |
-| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
+| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
 | subjects                   | list    | list of similar subjects with size of <prediction_count> order by similarity                                                                                                                                          |
 | similarity                 | float   | similarity that on that image predicted person                                                                                                                                                                        |
 | subject                    | string  | name of the subject in Face Collection                                                                                                                                                                                |
@@ -349,7 +349,7 @@ Face collection could be used to manage known faces, e.g. add, list, or delete t
 
 Face recognition is performed for the saved known faces in face collection, so before using the `recognize` method you need to save at least one face into the face collection.
 
-More information about face collection and managing examples [here](https://github.com/exadel-inc/CompreFace/blob/master/docs/Rest-API-description.md#managing-subject-examples)
+More information about face collection and managing examples [here](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Rest-API-description.md#managing-subject-examples)
 
 **Methods:**
 
@@ -570,7 +570,7 @@ Supported options:
 | det_prob_threshold | string  | minimum required confidence that a recognized face is actually a face. Value is between 0.0 and 1.0                                                                                          |
 | limit              | integer | maximum number of faces on the image to be recognized. It recognizes the biggest faces first. Value of 0 represents no limit. Default value: 0                                               |
 | prediction_count   | object  | maximum number of subject predictions per face. It returns the most similar subjects. Default value: 1                                                                                       |
-| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md) |
+| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md) |
 | status             | boolean | if true includes system information like execution_time and plugin_version fields. Default value is false                                                                                    |
 
 Response:
@@ -623,14 +623,14 @@ Response:
 ```
 | Element                    | Type    | Description                                                                                                                                                                                                           |
 |----------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/CompreFace/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
-| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
+| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
+| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
 | box                        | object  | list of parameters of the bounding box for this face                                                                                                                                                                  |
 | probability                | float   | probability that a found face is actually a face                                                                                                                                                                      |
 | x_max, y_max, x_min, y_min | integer | coordinates of the frame containing the face                                                                                                                                                                          |
-| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
+| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
 | similarity                 | float   | similarity that on that image predicted person                                                                                                                                                                        |
 | execution_time             | object  | execution time of all plugins                                                                                                                                                                                         |
 | plugins_versions           | object  | contains information about plugin versions                                                                                                                                                                            |
@@ -665,7 +665,7 @@ Returns subjects object
 
 Subjects object allows working with subjects directly (not via subject examples).
 
-More information about subjects [here](https://github.com/exadel-inc/CompreFace/blob/master/docs/Rest-API-description.md#managing-subjects)
+More information about subjects [here](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Rest-API-description.md#managing-subjects)
 
 ```javascript
 let subjects = recognitionService.getSubjects(); 
@@ -844,7 +844,7 @@ Supported options:
 |--------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | det_prob_threshold | string  | minimum required confidence that a recognized face is actually a face. Value is between 0.0 and 1.0                                                                                          |
 | limit              | integer | maximum number of faces on the image to be recognized. It recognizes the biggest faces first. Value of 0 represents no limit. Default value: 0                                               |
-| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md) |
+| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md) |
 | status             | boolean | if true includes system information like execution_time and plugin_version fields. Default value is false                                                                                    |
 
 Response:
@@ -893,14 +893,14 @@ Response:
 
 | Element                    | Type    | Description                                                                                                                                                                                                           |
 |----------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/CompreFace/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
-| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
+| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
+| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
 | box                        | object  | list of parameters of the bounding box for this face (on processedImage)                                                                                                                                              |
 | probability                | float   | probability that a found face is actually a face (on processedImage)                                                                                                                                                  |
 | x_max, y_max, x_min, y_min | integer | coordinates of the frame containing the face (on processedImage)                                                                                                                                                      |
-| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
+| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
 | execution_time             | object  | execution time of all plugins                                                                                                                                                                                         |
 | plugins_versions           | object  | contains information about plugin versions                                                                                                                                                                            |
 
@@ -950,7 +950,7 @@ Supported options:
 |--------------------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | det_prob_threshold | string  | minimum required confidence that a recognized face is actually a face. Value is between 0.0 and 1.0                                                                                          |
 | limit              | integer | maximum number of faces on the image to be recognized. It recognizes the biggest faces first. Value of 0 represents no limit. Default value: 0                                               |
-| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md) |
+| face_plugins       | string  | comma-separated slugs of face plugins. If empty, no additional information is returned. [Learn more](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md) |
 | status             | boolean | if true includes system information like execution_time and plugin_version fields. Default value is false                                                                                    |
 
 Response:
@@ -1036,14 +1036,14 @@ Response:
 |----------------------------|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | source_image_face          | object  | additional info about source image face                                                                                                                                                                               |
 | face_matches               | array   | result of face verification                                                                                                                                                                                           |
-| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
-| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/CompreFace/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
-| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
+| age                        | object  | detected age range. Return only if [age plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| gender                     | object  | detected gender. Return only if [gender plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                       |
+| mask                       | object  | detected mask. Return only if [face mask plugin](https://github.com/exadel-inc/SmartFacial/blob/master/docs/Face-services-and-plugins.md) is enabled.                                                                  |
+| embedding                  | array   | face embeddings. Return only if [calculator plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled                                                   |
 | box                        | object  | list of parameters of the bounding box for this face                                                                                                                                                                  |
 | probability                | float   | probability that a found face is actually a face                                                                                                                                                                      |
 | x_max, y_max, x_min, y_min | integer | coordinates of the frame containing the face                                                                                                                                                                          |
-| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/CompreFace/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
+| landmarks                  | array   | list of the coordinates of the frame containing the face-landmarks. Return only if [landmarks plugin](https://github.com/exadel-inc/SmartFacial/tree/master/docs/Face-services-and-plugins.md#face-plugins) is enabled |
 | similarity                 | float   | similarity between this face and the face on the source image                                                                                                                                                         |
 | execution_time             | object  | execution time of all plugins                                                                                                                                                                                         |
 | plugins_versions           | object  | contains information about plugin versions                                                                                                                                                                            |
@@ -1083,7 +1083,7 @@ After creating your first contributing pull request, you will receive a request 
 
 ## Report Bugs
 
-Please report any bugs [here](https://github.com/exadel-inc/compreface-javascript-sdk/issues).
+Please report any bugs [here](https://github.com/exadel-inc/SmartFacial-javascript-sdk/issues).
 
 If you are reporting a bug, please specify:
 
@@ -1094,7 +1094,7 @@ If you are reporting a bug, please specify:
 
 ## Submit Feedback
 
-The best way to send us feedback is to file an issue at https://github.com/exadel-inc/compreface-javascript-sdk/issues.
+The best way to send us feedback is to file an issue at https://github.com/exadel-inc/SmartFacial-javascript-sdk/issues.
 
 If you are proposing a feature, please:
 
@@ -1104,4 +1104,4 @@ If you are proposing a feature, please:
 
 # License info
 
-CompreFace JS SDK is open-source facial recognition SDK released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
+SmartFacial JS SDK is open-source facial recognition SDK released under the [Apache 2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html).
